@@ -3,11 +3,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function goToPost() {
-  router.push({
-    path: '/post/123',
-    query: { writer: '홍길동' }
-  })
+function goToAbout() {
+  router.push('/about')
 }
 </script>
 
@@ -15,6 +12,6 @@ function goToPost() {
   <div>
     <h2>홈 페이지</h2>
     <p>여기는 메인 페이지입니다.</p>
-    <button @click="goToPost">게시글 123 보기</button>
+    <button @click="goToAbout">소개로 이동</button>
   </div>
 </template>
