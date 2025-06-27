@@ -11,5 +11,9 @@ export const useUserStore = defineStore('user', {
     logout() {
       this.username = ''
     }
+  },
+  getters: {
+    isLoggedIn: (state) => !!state.username
   }
 })
+
