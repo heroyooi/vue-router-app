@@ -1,8 +1,17 @@
 <template>
   <nav class="navbar">
-    <router-link to="/">홈</router-link>
-    <router-link v-if="!store.isLoggedIn" to="/login">로그인</router-link>
-    <button v-else @click="store.logout">로그아웃</button>
+    <RouterLink to="/">홈</RouterLink>
+    <RouterLink to="/about">소개</RouterLink>
+    <RouterLink to="/posts">게시글</RouterLink>
+
+    <template v-if="!store.isLoggedIn">
+      <RouterLink to="/login">로그인</RouterLink>
+    </template>
+
+    <template v-else>
+      <RouterLink to="/posts/new">새 글 쓰기</RouterLink> <!-- ✅ 추가 -->
+      <button @click="store.logout">로그아웃</button>
+    </template>
   </nav>
 </template>
 
@@ -17,7 +26,7 @@ const store = useUserStore()
 
 .navbar {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   padding: 12px 24px;
   background-color: #f5f5f5;
 
@@ -31,6 +40,11 @@ const store = useUserStore()
   button {
     background: none;
     border: none;
+    padding: 0;
+  }
+
+  button:hover {
+    text-decoration: underline;
   }
 }
 </style>
